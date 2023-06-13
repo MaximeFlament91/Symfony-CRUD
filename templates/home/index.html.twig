@@ -4,7 +4,7 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
@@ -16,13 +16,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
-
     <!-- Custom styles for this template -->
     <link href="../assets/css/album.css" rel="stylesheet">
   </head>
 
-  <body>
 
 
 
@@ -38,31 +35,32 @@
         </div>
       </section>
 
-      <div class="album py-5 bg-light">
+      <div class="album py-3 bg-light">
         <div class="container">
-
+        {% for book in books %}
+       
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img height="500px" class="card-img-top" src="{{book.picture}}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <strong>{{book.title}}</strong>
+                  <p class="card-text">{{book.description | slice(0,100) ~ (book.description | length > 100 ? '...' : '')}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">{{book.createdAt |date('d/m/y')}}</small>
                   </div>
                 </div>
               </div>
             </div>
-
+          {% endfor %}
           </div>
         </div>
       </div>
 
 
 
-  </body>
 {% endblock %}

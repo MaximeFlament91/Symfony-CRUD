@@ -8,13 +8,12 @@
 <h1 class="text-center text-muted">Nouveau livre</h1>
     <div class="row">
         <div class="col-md-5 mx-auto">
-        {% for label,message in app.flashes %}
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message }}
                 </div>
             {% endfor %}
-        {% endfor %}
+
             {{form(form)}}
         </div>
     </div>
