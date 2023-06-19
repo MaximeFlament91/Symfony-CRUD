@@ -42,14 +42,14 @@
           <div class="row">
             <div class="col-md-5">
               <div class="card mb-4 box-shadow">
-                <img height="500px" class="card-img-top" src="{{book.picture}}" alt="Card image cap">
+                <img height="500px" class="card-img-top" src="{{ asset('uploads/pictures/' ~ book.picture) }}" alt="Card image cap">
                 <div class="card-body">
                 <strong>{{book.title}}</strong>
                   <p class="card-text">{{book.description | slice(0,100) ~ (book.description | length > 100 ? '...' : '')}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="{{path('app_singlebook',{id:book.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    </div>
+                    </div> 
                     <small class="text-muted">{{book.createdAt |date('d/m/y')}}</small>
                   </div>
                 </div>
