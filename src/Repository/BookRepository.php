@@ -63,4 +63,23 @@ class BookRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+//Recuperer le livre selon le titre
+public function findByTitle(string $value)
+{
+    return $this->createQueryBuilder('b')
+        ->where('b.title LIKE :val')
+        ->setParameter('val', "%$value%")
+        ->getQuery()
+        ->getResult();
+        // SELECT * FROM book WHERE title LIKE '%value%'
+}
+//Recuperer le nombre total de livre
+public function findTotal()
+{
+    return $this->createQueryBuilder('b')
+        ->select('COUNT(b.id)')
+        ->getQuery()
+        ->getResult();
+}
 }

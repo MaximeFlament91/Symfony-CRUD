@@ -10,45 +10,32 @@
 
 <div class="example-wrapper">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-
-    <!-- Custom styles for this template -->
     <link href="../assets/css/album.css" rel="stylesheet">
   </head>
 
-
-
-
-
       <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Album example</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
-        </div>
-      </section>
+			<div class="container">
+				<h1 class="jumbotron-heading">Album example</h1>
+				<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+				<p>
+					<a href="#" class="btn btn-primary my-2">Main call to action</a>
+					<a href="#" class="btn btn-secondary my-2">Secondary action</a>
+				</p>
+			</div>
+		</section>
 
       <div class="album py-3 bg-light">
         <div class="container">
         {% for book in books %}
-       
-          <div class="row">
             <div class="col-md-5">
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-3 box-shadow">
                 <img height="500px" class="card-img-top" src="{{ asset('uploads/pictures/' ~ book.picture) }}" alt="Card image cap">
                 <div class="card-body">
                 <strong>{{book.title}}</strong>
                   <p class="card-text">{{book.description | slice(0,100) ~ (book.description | length > 100 ? '...' : '')}}</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="{{path('app_singlebook',{id:book.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+                  <div class="btn-group">
+                <a href="{{path('app_singlebook',{id:book.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
                     </div> 
                     <small class="text-muted">{{book.createdAt |date('d/m/y')}}</small>
                   </div>
@@ -59,7 +46,4 @@
           </div>
         </div>
       </div>
-
-
-
 {% endblock %}

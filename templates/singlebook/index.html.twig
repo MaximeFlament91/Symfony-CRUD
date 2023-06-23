@@ -30,16 +30,28 @@
                                 </div>
                                 <p class="about">{{book.description}}</p>
                                 <div class="cart mt-4 align-items-center">
-                                <button class="btn btn-danger text-uppercase mr-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</button>
-                            <button class="btn btn-danger text-uppercase mr-2 px-4">Supprimer</button>
-                        </div>
-                    </div>
+                            <a class="btn btn-danger text-uppercase mr-2 px-4" data-bs-toggle="modal" data-bs-target="exampleModal">Supprimer</a>
+                        <a href="{{path('app_editbook',{id:book.id})}}" class="btn btn-info text-uppercase">Modifier</a>
+                    <a class="btn btn-warning text-uppercase mr-2 px-4" data-toggle="button" data-targer="exampleModal2">Commentaire</a>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  
 
+<div class="row m-5">
+{% for comment in book.comments %}
+          <div class="col-md-12">
+              <strong>{{comment.sender}}</strong>
+    <p>{{comment.text}}</p>
+    <cite>{{comment.createdAt | date('d/m/y')}}</cite>
+  </div>
+{% endfor %}
+</div>
 
 
 <!-- Modal -->
@@ -60,5 +72,22 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nouveau commentaire</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{form(form)}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
